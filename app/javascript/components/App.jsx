@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Timer from '../components/Timer/Timer'
 
 function App() {
   return (
-    <div className='App'>
-      <h1 className='text-4xl font-bold text-center'>Let's get to work!</h1>
-    </div>
+    <Fragment>
+      <Timer />
+    </Fragment>
   )
 }
 
