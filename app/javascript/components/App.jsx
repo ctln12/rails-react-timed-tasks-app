@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react'
-import Timer from '../components/Timer/Timer'
 
 function App() {
   return (
     <Fragment>
-      <Timer />
+      <h1>Let's get to work!</h1>
     </Fragment>
   )
 }
