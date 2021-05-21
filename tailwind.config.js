@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  purge: ["./app/**/*.html.erb", "./app/javascript/**/*.jsx"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
