@@ -67,7 +67,7 @@ class Timer extends Component {
   render() {
   const { duration, status, key } = this.state;
     return (
-      <div className="p-4 min-h-screen flex flex-col justify-between my-0 mx-auto max-w-xs">
+      <div className="Timer p-4 mx-auto flex flex-col justify-between max-w-xs">
         <h1 className="font-bold mb-10 text-3xl text-gray-900 text-center">Let's get to work!</h1>
         <div className="flex justify-center">
           <CountdownCircleTimer
