@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      duration: 10,
+      duration: 25*60,
       status: false,
       key: 0
     }
@@ -41,7 +41,6 @@ class App extends Component {
     });
     this.startButton.current.classList.add('hidden');
     this.pauseButton.current.classList.remove('hidden');
-    console.log("Timer started...");
   }
 
   pauseTimer() {
@@ -50,7 +49,6 @@ class App extends Component {
     });
     this.pauseButton.current.classList.add('hidden');
     this.startButton.current.classList.remove('hidden');
-    console.log("Timer paused.");
   }
 
   stopTimer() {
@@ -60,13 +58,12 @@ class App extends Component {
     });
     this.pauseButton.current.classList.add('hidden');
     this.startButton.current.classList.remove('hidden');
-    console.log("Timer stopped!");
   }
 
   render() {
   const { duration, status, key } = this.state;
     return (
-      <div className="p-4 min-h-screen flex flex-col justify-between">
+      <div className="p-4 min-h-screen flex flex-col justify-between my-0 mx-auto w-96">
         <h1 className="font-bold mb-10 text-3xl text-gray-800 text-center">Let's get to work!</h1>
         <div className="flex justify-center">
           <CountdownCircleTimer
