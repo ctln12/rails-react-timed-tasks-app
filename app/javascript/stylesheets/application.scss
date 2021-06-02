@@ -2,6 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import "@fortawesome/fontawesome-free/css/all";
+
 .Timer {
   height: calc(100vh - 64px);
 }
