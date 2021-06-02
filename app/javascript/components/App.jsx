@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      duration: 25*60,
+      duration: 10,
       status: false,
       key: 0
     }
@@ -76,10 +76,7 @@ class App extends Component {
             colors="#A5A5A5"
             size={240}
             strokeWidth={12}
-            onComplete={() => {
-              setStatus((prevStatus) => !prevStatus);
-              return [true, 1000];
-            }}
+            onComplete={this.stopTimer}
           >
             {this.renderTime}
           </CountdownCircleTimer>
