@@ -1,11 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Timer from './Timer/Timer';
+import Navbar from './Navbar/Navbar';
 
 const App = () => {
   return (
-    <Fragment>
+    <div className="App">
+      <Navbar />
       <Timer />
-    </Fragment>
+    </div>
   );
 }
 
