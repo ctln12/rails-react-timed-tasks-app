@@ -1,14 +1,10 @@
 import React from 'react';
-import Timer from './Timer/Timer';
-import Navbar from './Navbar/Navbar';
+import Routes from '../routes/index';
 
-const App = () => {
+export default function App(){
   return (
-    <div className="App">
-      <Navbar />
-      <Timer />
-    </div>
+    <>
+      {Routes}
+    </>
   );
 }
-
-export default App;
