@@ -7,9 +7,11 @@ import Settings from "../components/Settings/Settings";
 export default (
   <Router>
     <Navbar />
-    <Switch>
-      <Route path="/" exact component={Timer} />
-      <Route path="/settings" exact component={Settings} />
-    </Switch>
+    <div className="Container p-4 mx-auto max-w-xs">
+      <Switch>
+        <Route path="/" exact component={Timer} />
+        <Route path="/settings" exact component={Settings} />
+      </Switch>
+    </div>
   </Router>
 );
