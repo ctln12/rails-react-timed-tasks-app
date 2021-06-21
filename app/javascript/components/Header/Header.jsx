@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 
-class Navbar extends Component {
+class Header extends Component {
   changeTitle = (pathname) => {
     if (pathname === '/') {
       return 'Timer';
@@ -13,14 +13,14 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="Navbar flex justify-between p-4 text-2xl h-16">
-        <div className="Navbar-menu">
+      <div className="Header flex justify-between p-4 text-2xl h-16">
+        <div className="Header-menu">
           <i className="fas fa-bars"></i>
           <span className="ml-4 font-light text-xl">
             {this.changeTitle(window.location.pathname)}
           </span>
         </div>
-        <div className="Navbar-settings">
+        <div className="Header-settings">
           <Link to="/settings">
             <i className="fas fa-cog"></i>
           </Link>
@@ -30,4 +30,4 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+export default withRouter(Header);
