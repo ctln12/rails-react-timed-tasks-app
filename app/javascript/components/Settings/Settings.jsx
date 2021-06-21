@@ -5,13 +5,21 @@ class Settings extends Component {
   constructor(props){
     super(props);
     this.state = {
-      focusSessionLength: 25,
-      shortBreakLength: 5,
-      longBreakLength: 15,
-      longBreakAfter: 4
+      focusSessionLength: '',
+      shortBreakLength: '',
+      longBreakLength: '',
+      longBreakAfter: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const focusSessionLength = localStorage.getItem('focusSessionLength') || '25';
+    const shortBreakLength = localStorage.getItem('shortBreakLength') || '5';
+    const longBreakLength = localStorage.getItem('longBreakLength') || '15';
+    const longBreakAfter = localStorage.getItem('longBreakAfter') || '4';
+    this.setState({ focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter });
   }
 
   handleChange(event) {
@@ -19,8 +27,11 @@ class Settings extends Component {
   }
 
   handleSubmit(event) {
-    alert('Saving new settings...');
-    // JSON.parse(localStorage.getItem('allProjects')) || []
+    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.state;
+    localStorage.setItem('focusSessionLength', focusSessionLength);
+    localStorage.setItem('shortBreakLength', shortBreakLength);
+    localStorage.setItem('longBreakLength', longBreakLength);
+    localStorage.setItem('longBreakAfter', longBreakAfter);
     event.preventDefault();
   }
 
