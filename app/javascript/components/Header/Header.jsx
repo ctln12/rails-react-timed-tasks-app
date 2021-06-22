@@ -11,6 +11,17 @@ class Header extends Component {
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
+  componentDidMount() {
+    const menuLinks = document.querySelectorAll('.bm-item');
+    menuLinks.forEach((link) => {
+      link.classList.remove('border-gray-900', 'bg-gray-900', 'text-white');
+      link.classList.add('border-white');
+      if (link.getAttribute('href') == window.location.pathname) {
+        link.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
+      }
+    })
+  }
+
   handleStateChange (state) {
     this.setState({menuOpen: state.isOpen})
   }
