@@ -15,8 +15,14 @@ class Header extends Component {
     this.setState({menuOpen: state.isOpen})
   }
 
-  closeMenu () {
-    this.setState({menuOpen: false})
+  closeMenu (event) {
+    this.setState({menuOpen: false});
+    const menuLinks = document.querySelectorAll('.bm-item');
+    menuLinks.forEach((link) => {
+      link.classList.remove('border-gray-900', 'bg-gray-900', 'text-white');
+      link.classList.add('border-white');
+    })
+    event.target.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
   }
 
   toggleMenu () {
@@ -39,10 +45,11 @@ class Header extends Component {
           menuOpen={this.state.menuOpen}
           handleStateChange={this.handleStateChange}
           closeMenu={this.closeMenu}
+          pathname={this.changeTitle(window.location.pathname)}
         />
         <div className="Header flex justify-between p-4 text-2xl h-16">
           <div className="Header-menu">
-            <i className="fas fa-bars" onClick={this.toggleMenu}></i>
+            <i className="fas fa-bars cursor-pointer" onClick={this.toggleMenu}></i>
             <span className="ml-4 font-light text-xl">
               {this.changeTitle(window.location.pathname)}
             </span>
