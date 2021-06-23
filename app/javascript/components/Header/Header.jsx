@@ -49,6 +49,17 @@ class Header extends Component {
     }
   }
 
+  setActiveSidebarLink(event) {
+    const menuLinks = document.querySelectorAll('.bm-item');
+    menuLinks.forEach((link) => {
+      link.classList.remove('border-gray-900', 'bg-gray-900', 'text-white');
+      link.classList.add('border-white');
+      if (link.getAttribute('href') == event.target.parentElement.getAttribute('href')) {
+        link.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
+      }
+    })
+  }
+
   render() {
     return (
       <>
@@ -66,7 +77,7 @@ class Header extends Component {
             </span>
           </div>
           <div className="Header-settings">
-            <Link to="/settings">
+            <Link to="/settings" onClick={(event) => this.setActiveSidebarLink(event)}>
               <i className="fas fa-cog"></i>
             </Link>
           </div>

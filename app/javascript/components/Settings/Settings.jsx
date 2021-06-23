@@ -43,6 +43,17 @@ class Settings extends Component {
     return items;
   }
 
+  setActiveSidebarLink(event) {
+    const menuLinks = document.querySelectorAll('.bm-item');
+    menuLinks.forEach((link) => {
+      link.classList.remove('border-gray-900', 'bg-gray-900', 'text-white');
+      link.classList.add('border-white');
+      if (link.getAttribute('href') == event.target.getAttribute('href')) {
+        link.classList.add('border-gray-900', 'bg-gray-900', 'text-white');
+      }
+    })
+  }
+
   render() {
     return (
       <div className="Settings">
@@ -89,7 +100,7 @@ class Settings extends Component {
           </label>
           <input type="submit" value="Save" className="bg-gray-900 text-white py-3 rounded-sm w-full" />
         </form>
-        <Link to="/" className="block text-center mt-2 border border-gray-900 text-gray-900 py-3 rounded-sm w-full">
+        <Link to="/" onClick={(event) => this.setActiveSidebarLink(event)} className="block text-center mt-2 border border-gray-900 text-gray-900 py-3 rounded-sm w-full">
           Back to timer
         </Link>
       </div>
