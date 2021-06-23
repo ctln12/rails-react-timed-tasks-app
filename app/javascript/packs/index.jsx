@@ -7,8 +7,10 @@ import '../stylesheets/index.scss';
 import App from '../components/App';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.createElement('div');
+  rootElement.className = 'root';
   ReactDOM.render(
     <App />,
-    document.body.appendChild(document.createElement('div')),
+    document.body.appendChild(rootElement),
   )
 })
