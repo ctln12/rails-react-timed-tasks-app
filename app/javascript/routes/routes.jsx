@@ -11,10 +11,20 @@ function Routes(props) {
       <div className="Container p-4 mx-auto max-w-xs">
         <Switch>
           <Route exact path="/">
-            <Timer />
+            <Timer
+              focusSessionLength={props.focusSessionLength}
+            />
           </Route>
           <Route exact path="/settings">
-            <Settings changePathname={props.changePathname} />
+            <Settings
+              focusSessionLength={props.focusSessionLength}
+              shortBreakLength={props.shortBreakLength}
+              longBreakLength={props.longBreakLength}
+              longBreakAfter={props.longBreakAfter}
+              changePathname={props.changePathname}
+              changeSettings={props.changeSettings}
+              saveSettings={props.saveSettings}
+            />
           </Route>
         </Switch>
       </div>

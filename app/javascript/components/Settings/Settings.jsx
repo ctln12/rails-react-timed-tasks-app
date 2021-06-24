@@ -4,34 +4,16 @@ import { Link } from "react-router-dom";
 class Settings extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      focusSessionLength: '',
-      shortBreakLength: '',
-      longBreakLength: '',
-      longBreakAfter: ''
-    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    const focusSessionLength = localStorage.getItem('focusSessionLength') || '25';
-    const shortBreakLength = localStorage.getItem('shortBreakLength') || '5';
-    const longBreakLength = localStorage.getItem('longBreakLength') || '15';
-    const longBreakAfter = localStorage.getItem('longBreakAfter') || '4';
-    this.setState({ focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter });
-  }
-
   handleChange(event) {
-    this.setState({[event.target.id]: event.target.value});
+    this.props.changeSettings(event);
   }
 
   handleSubmit(event) {
-    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.state;
-    localStorage.setItem('focusSessionLength', focusSessionLength);
-    localStorage.setItem('shortBreakLength', shortBreakLength);
-    localStorage.setItem('longBreakLength', longBreakLength);
-    localStorage.setItem('longBreakAfter', longBreakAfter);
+    this.props.saveSettings();
     event.preventDefault();
   }
 
@@ -44,6 +26,7 @@ class Settings extends Component {
   }
 
   render() {
+    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.props;
     return (
       <div className="Settings">
         <form onSubmit={this.handleSubmit}>
@@ -52,7 +35,7 @@ class Settings extends Component {
             <select
               className="block w-full mt-1 rounded border-gray-300 shadow-sm max-h-10"
               id="focusSessionLength"
-              value={this.state.focusSessionLength}
+              value={focusSessionLength}
               onChange={this.handleChange}>
               {this.createSelectItems(240, 'minutes')}
             </select>
@@ -62,7 +45,7 @@ class Settings extends Component {
             <select
               className="block w-full mt-1 rounded border-gray-300 shadow-sm"
               id="shortBreakLength"
-              value={this.state.shortBreakLength}
+              value={shortBreakLength}
               onChange={this.handleChange}>
               {this.createSelectItems(240, 'minutes')}
             </select>
@@ -72,7 +55,7 @@ class Settings extends Component {
             <select
               className="block w-full mt-1 rounded border-gray-300 shadow-sm"
               id="longBreakLength"
-              value={this.state.longBreakLength}
+              value={longBreakLength}
               onChange={this.handleChange}>
               {this.createSelectItems(240, 'minutes')}
             </select>
@@ -82,7 +65,7 @@ class Settings extends Component {
             <select
               className="block w-full mt-1 rounded border-gray-300 shadow-sm"
               id="longBreakAfter"
-              value={this.state.longBreakAfter}
+              value={longBreakAfter}
               onChange={this.handleChange}>
               {this.createSelectItems(60, 'focus sessions')}
             </select>

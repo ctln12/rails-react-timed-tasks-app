@@ -5,7 +5,7 @@ class Timer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      duration: 25*60,
+      duration: 0,
       status: false,
       key: 0
     }
@@ -15,6 +15,13 @@ class Timer extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState((state, props) => ({
+      duration: props.focusSessionLength * 60,
+      key: state.key + 1
+    }))
   }
 
   children = ({ remainingTime }) => {
@@ -54,10 +61,10 @@ class Timer extends Component {
   }
 
   stopTimer() {
-    this.setState({
+    this.setState((state) => ({
       status: false,
-      key: this.state.key + 1,
-    });
+      key: state.key + 1,
+    }));
     this.pauseButton.current.classList.add('hidden');
     this.stopButton.current.classList.add('hidden');
     this.startButton.current.classList.add('w-44');
@@ -65,7 +72,7 @@ class Timer extends Component {
   }
 
   render() {
-  const { duration, status, key } = this.state;
+    const { duration, status, key } = this.state;
     return (
       <div className="Timer h-full flex flex-col justify-between">
         <h1 className="font-bold mb-10 text-3xl text-gray-900 text-center">Let's get to work!</h1>
