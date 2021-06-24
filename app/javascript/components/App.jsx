@@ -12,7 +12,6 @@ class App extends Component {
       longBreakAfter: ''
     };
     this.changePathname = this.changePathname.bind(this);
-    this.changeSettings = this.changeSettings.bind(this);
     this.saveSettings = this.saveSettings.bind(this);
   }
 
@@ -42,16 +41,17 @@ class App extends Component {
     })
   }
 
-  changeSettings(event) {
-    this.setState({[event.target.id]: event.target.value});
-  }
-
-  saveSettings() {
-    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.state;
-    localStorage.setItem('focusSessionLength', focusSessionLength);
-    localStorage.setItem('shortBreakLength', shortBreakLength);
-    localStorage.setItem('longBreakLength', longBreakLength);
-    localStorage.setItem('longBreakAfter', longBreakAfter);
+  saveSettings(settings) {
+    this.setState((state) => ({
+      focusSessionLength: settings.focusSessionLength,
+      shortBreakLength: settings.shortBreakLength,
+      longBreakLength: settings.longBreakLength,
+      longBreakAfter: settings.longBreakAfter
+    }))
+    localStorage.setItem('focusSessionLength', this.state.focusSessionLength);
+    localStorage.setItem('shortBreakLength', this.state.shortBreakLength);
+    localStorage.setItem('longBreakLength', this.state.longBreakLength);
+    localStorage.setItem('longBreakAfter', this.state.longBreakAfter);
   }
 
   render() {
@@ -63,7 +63,6 @@ class App extends Component {
           longBreakLength={this.state.longBreakLength}
           longBreakAfter={this.state.longBreakAfter}
           changePathname={this.changePathname}
-          changeSettings={this.changeSettings}
           saveSettings={this.saveSettings}
         />
       </div>

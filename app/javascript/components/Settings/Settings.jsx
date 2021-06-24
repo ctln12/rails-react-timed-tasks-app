@@ -4,16 +4,31 @@ import { Link } from "react-router-dom";
 class Settings extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      focusSessionLength: '',
+      shortBreakLength: '',
+      longBreakLength: '',
+      longBreakAfter: ''
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.setState((state, props) => ({
+      focusSessionLength: props.focusSessionLength,
+      shortBreakLength: props.shortBreakLength,
+      longBreakLength: props.longBreakLength,
+      longBreakAfter: props.longBreakAfter
+    }));
+  }
+
   handleChange(event) {
-    this.props.changeSettings(event);
+    this.setState({[event.target.id]: event.target.value});
   }
 
   handleSubmit(event) {
-    this.props.saveSettings();
+    this.props.saveSettings(this.state);
     event.preventDefault();
   }
 
@@ -26,7 +41,7 @@ class Settings extends Component {
   }
 
   render() {
-    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.props;
+    const { focusSessionLength, shortBreakLength, longBreakLength, longBreakAfter } = this.state;
     return (
       <div className="Settings">
         <form onSubmit={this.handleSubmit}>

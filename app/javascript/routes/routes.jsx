@@ -22,7 +22,6 @@ function Routes(props) {
               longBreakLength={props.longBreakLength}
               longBreakAfter={props.longBreakAfter}
               changePathname={props.changePathname}
-              changeSettings={props.changeSettings}
               saveSettings={props.saveSettings}
             />
           </Route>
