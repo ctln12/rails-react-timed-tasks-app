@@ -15,6 +15,7 @@ class Timer extends Component {
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
+    this.playSound = this.playSound.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +72,12 @@ class Timer extends Component {
     this.startButton.current.classList.remove('w-full', 'hidden');
   }
 
+  playSound() {
+    this.stopTimer();
+    const stopGong = new Audio('/stop_gong.mp3');
+    stopGong.play();
+  }
+
   render() {
     const { duration, status, key } = this.state;
     return (
@@ -84,7 +91,7 @@ class Timer extends Component {
             colors="#A5A5A5"
             size={240}
             strokeWidth={12}
-            onComplete={this.stopTimer}
+            onComplete={this.playSound}
           >
             {this.renderTime}
           </CountdownCircleTimer>
